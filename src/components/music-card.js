@@ -1,6 +1,6 @@
 import React from 'react'
 
-const MovieCard = props =>
+const MusicCard = props =>
   <div className="db center mw5 black">
 
     <img className="db ba b--black-10" alt={props.title} src={props.image} />
@@ -13,4 +13,4 @@ const MovieCard = props =>
     </dl>
   </div>
 
-export default MovieCard
+export default MusicCard

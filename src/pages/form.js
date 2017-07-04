@@ -11,12 +11,12 @@ const Form = props =>
       <div className="mw6 pv2 ph3 center mt2">
         <h2>Add New Favorite</h2>
         <form>
-          <TextField label="Movie" optional={false} help="Enter Movie Name" />
-          <TextField label="Year" optional={false} help="Enter Movie Year" />
+          <TextField label="Name" optional={false} help="Enter Album Name" />
+          <TextField label="Band" optional={false} help="Enter Band Name" />
           <TextField
             label="Poster"
             optional={false}
-            help="Enter Movie Poster"
+            help="Enter Album Poster Link"
           />
           <TextField
             label="Rank"
