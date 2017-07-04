@@ -1,85 +1,53 @@
-# Favorite Music Album React/Redux Tutorial
+# Favorite Movies React/Redux Tutorial
 
 ## Setup
 
 ```
-git clone https://github.com/jrs-innovation-center/music-favorites.git music-favorites
-cd music-favorites
+git clone https://github.com/jrs-innovation-center/movie-favorites-2.git movie-favorites
+cd movie-favorites
 npm install
 npm start
 ```
 
-* Open editor to Music favorites
+* Open editor to movie favorites
 * Open Readme
 
 ---
 
-## Step 1 - List Favorite Music
+## Step 1 - List Favorite Movies
 
 On the Home page component use `map` to list all of the
-favorite music in the redux store state `favorites`.
+favorite movies in the redux store state `favorites`.
 
 ---
 
 ## Step 2 - Show each favorite when clicked.
 
-On the Show page component use `componentDidMount` to load the favorite music from the route params id into the favorite state. Then in the render function present the
-the favorite music using the MusicCard Component and the favorite state.
+On the Show page component use `componentDidMount` to load the favorite movie from the route params id into the favorite state. Then in the render function present the
+the favorite movie using the MovieCard Component and the favorite state.
 
 ---
 
 ## Step 3 - Add a new favorite to state
 
 On the form component we want to enable the
-user to create a new music favorite and
+user to create a new movie favorite and
 add it to the favorites list.
 
 ---
 
-## Step 4 - Search for a music via https://music-search.jrs.camp/
+## Step 4 - Search for a movie via omdbapi
 
-On the new form, create a button called search, when clicked route to the search component to allow the user to find and
-select the music data from the music database.
+On the new form, create a button called search, when clicked route to the search
+component to allow the user to find and
+select the movie from the movie database.
 Take the selection and apply to the new
 favorite model and redirect back to the
 form component.
 
-### Example
-
-```
-import preact from 'preact'
-
-/** @jsx preact.h */
-import R from 'ramda'
-const { map } = R
-
-fetch(`https://music-search.jrs.camp/?q=beatles`, {
-  headers: {
-    Authorization: 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJqcnMuY2FtcCIsImlhdCI6MTQ5ODg2OTM0MiwiZXhwIjoxNTkzNTYzNzQyLCJhdWQiOiJtdXNpYy1zZWFyY2guanJzLmNhbXAiLCJzdWIiOiIxMjM0In0.XtmiG7OD3pGdS748IC4CRJp_qUa7A_JvtNu2G_GcIP8'
-  }
-})
-.then(res => res.json())
-.then(items => {
-
-const li = ({id, href, name, poster}) => (
-  <li key={id}>
-    <a target="_blank" href={`https://open.spotify.com/album/${id}`}>
-    <img src={poster} alt={name} />
-    </a>
-  </li>
-)
-preact.render(
-  <ul>
-    {map(li, items)}            
-  </ul>, document.body)
-})
-```
-
-[Live Demo](https://glitch.com/edit/#!/jrs-camp-music-search)
-
 ---
 
-## Step 5 - Persist Music Favorite Data
+## Step 5 - Persist Movie Favorite Data
 to local api
 
 Using the store.dispatch, redux thunk and fetch we want to
@@ -88,7 +56,7 @@ app starts.
 
 ---
 
-## Step 6 - Refactor Add Music Favorite to API
+## Step 6 - Refactor Add Movie Favorite to API
 
 On the form component we want to send the
 new favorite to the api on localhost:4000/favorites. Using fetch, and
@@ -96,25 +64,25 @@ redux thunk and dispatch.
 
 ---
 
-## Step 7 - Edit the Music favorite rank
+## Step 7 - Edit the Movie favorite rank
 
 Create a new page component called edit-rank.js
 in the pages folder, connect the edit page
 via routing on the show movie favorite. Then
-allow the user to edit the rank of the selected music, by loading the favorite on
+allow the user to edit the rank of the selected movie, by loading the favorite on
 component did mount and saving the movie to the api on submit.
 
 ---
 
-## Step 8 - Remove the Music Favorite
+## Step 8 - Remove the Movie Favorite
 
-On the show music favorite page add a remove button, that prompts the user `are you sure?`.
+On the show movie favorite page add a remove button, that prompts the user `are you sure?`.
 If answer is true then use fetch to remove the
 favorite from the api and state.
 
 ---
 
-## Step 9 - Sort Music Favorite List by rank
+## Step 9 - Sort Movie Favorite List by rank
 
 Add the movie rank to the list and sort by rank
 using the ramda sortBy function. Make sure the
@@ -124,7 +92,7 @@ sort is by value and not lexical.
 
 ## Step 10 - Add a favorite search filter
 
-On the home component we want to add the ability to search for favorite music and dynamically filter the list of favorites by
+On the home component we want to add the ability to search for favorite movies and dynamically filter the list of favorites by
 the search criteria.
 
 ---
@@ -132,9 +100,29 @@ the search criteria.
 ## Step 11 - Only show the top 10 with a more button, when pressed show more.
 
 Default the initial view to the top 10 movie favorites, but add a more button to display
-more music favorites 10 at a time.
+more movie favorites 10 at a time.
 
 ---
+
+## Step 12 - Add imdbRating to movie favorite.
+
+We want to create a script, that will go and
+add the imdbRating to all the current favorites in the api. Then we want to add the
+ability to get the ratings via the search movie feature.
+
+---
+
+## Step 13 - Add plot and actors to movie favorite document.
+
+Create a script to iterate through all movie favorites and add the plot and actors to the
+movie favorite, then in the search, any new
+movie favorite add the plot and actors.
+
+---
+
+## Extra features
+
+Spend time thinking about extra features to add. Try to add two useful features.
 
 
 # FROM: JRS React Starter Kit
